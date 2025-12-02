@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agentic Symptom Interview (Non-Diagnostic)</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div id="interview-screen" class="screen active">
+      <nav class="navbar">
+        <h1 class="gradient-text">🩺 Symptom Interview Agent</h1>
+        <p class="subtitle-nav">
+          A safe, non-diagnostic, conversational intake agent.
+        </p>
+      </nav>
+
+      <div class="interview-container">
+        <div class="info-card">
+          <h4>🚨 Safety Note</h4>
+          <p>
+            **This is NOT a diagnostic tool.** This agent is designed only to
+            gather structured information about your symptoms for a professional.
+            **Always consult a doctor for medical advice or diagnosis.**
+          </p>
+          <h4>✨ How It Works</h4>
+          <ul>
+            <li>
+              **Step 1:** Enter your main symptom and click 'Start Interview'.
+            </li>
+            <li>
+              **Step 2:** The **Conversational Interviewer Agent** will ask
+              structured follow-up questions.
+            </li>
+            <li>
+              **Step 3:** After a few questions, the **Structured Report
+              Generator Agent** will compile your answers into a professional
+              report format (JSON).
+            </li>
+          </ul>
+        </div>
+
+        <div class="chat-card">
+          <div id="chat-history" class="chat-history">
+            <div class="chat-message agent">
+              <span class="role">Agent</span>
+              <p>
+                Welcome. Please describe your main symptom to begin the interview.
+              </p>
+            </div>
+          </div>
+
+          <form id="interview-form" class="interview-form">
+            <input
+              type="text"
+              id="user-input"
+              placeholder="e.g., I have a headache."
+              autocomplete="off"
+              required
+            />
+            <button type="submit" id="submit-button" class="btn-primary">
+              <span id="button-text">Start Interview</span>
+              <div id="loader-spinner" class="spinner-small" style="display: none;"></div>
+            </button>
+          </form>
+
+          <div id="report-container" style="display: none; margin-top: 20px;">
+            <h3>✅ Structured Non-Diagnostic Report</h3>
+            <pre id="structured-report-display" class="report-json-display"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
